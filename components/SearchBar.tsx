@@ -5,7 +5,6 @@ import { useState } from "react";
 
 const SearchBar = () => {
   const [manufacturer, setManufacturer] = useState("");
-  console.log(manufacturer);
   const handleSubmit = () => {};
   return (
     <form className="searchbar" onSubmit={handleSubmit}>
