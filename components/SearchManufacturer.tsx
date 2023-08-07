@@ -4,7 +4,6 @@ import { searchManufacturerProps } from "@/types";
 import { Combobox, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
 import { manufacturers } from "@/constants";
-import { AiOutlineCheck } from "react-icons/ai";
 
 const SearchManufacturer = ({
   manufacturer,
