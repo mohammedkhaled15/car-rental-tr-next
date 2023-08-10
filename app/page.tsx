@@ -1,8 +1,9 @@
-import { Hero, SearchBar, CustomFilter } from "@/components";
-import { fetchCars } from "@/utils";
+import { Hero, SearchBar, CustomFilter, CustomButton } from "@/components";
+import { fetchCars, updateSearchParams } from "@/utils";
 import { CarCard } from "@/components";
 import { FilterProps } from "@/types";
 import { fuels, yearsOfProduction } from "../constants/index";
+import ShowMore from "@/components/ShowMore";
 
 interface HomeProps {
   searchParams: FilterProps;
@@ -13,7 +14,7 @@ export default async function Home({ searchParams }: HomeProps) {
     manufacturer: searchParams.manufacturer || "",
     year: searchParams.year || 2022,
     fuel: searchParams.fuel || "",
-    limit: searchParams.limit || 10,
+    limit: searchParams.limit || 6,
     model: searchParams.model || "",
   });
   const isDataEmpty = !Array.isArray(allCars) || allCars.length < 1 || !allCars;
@@ -43,6 +44,10 @@ export default async function Home({ searchParams }: HomeProps) {
                 <CarCard car={car} />
               ))}
             </div>
+            <ShowMore
+              pageNumber={(searchParams.limit || 6) / 6}
+              isNext={(searchParams.limit || 6) > allCars.length}
+            />
           </section>
         ) : (
           <div className="home__error-container">
@@ -52,6 +57,7 @@ export default async function Home({ searchParams }: HomeProps) {
             <p>{allCars?.message}</p>
           </div>
         )}
+        <div className="flex justify-center items-center"></div>
       </div>
     </main>
   );
