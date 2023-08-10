@@ -36,6 +36,7 @@ const CarCard = ({ car }: CarCardProps) => {
           alt="car model"
           fill
           className="object-contain"
+          sizes="100%"
         />
       </div>
 
